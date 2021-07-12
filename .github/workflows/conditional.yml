@@ -21,7 +21,7 @@ jobs:
         echo "GITHUB_CUR_PRICE=${cur_price}" >> $GITHUB_ENV
         echo "GITHUB_PREV_PRICE=${prev_price}" >> $GITHUB_ENV
         echo "GITHUB_MAIL_UPDATE=0" >> $GITHUB_ENV
-    - name: test for equality
+    - name: test for limit event
       if: (((env.GITHUB_CUR_PRICE >= env.GITHUB_PRICE_LIMIT) &&  (env.GITHUB_PREV_PRICE < env.GITHUB_PRICE_LIMIT)) || ((env.GITHUB_CUR_PRICE <= env.GITHUB_PRICE_LIMIT) &&  (env.GITHUB_PREV_PRICE > env.GITHUB_PRICE_LIMIT)))
       run: |-
         echo "limit event occurred"
