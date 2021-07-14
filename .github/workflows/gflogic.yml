@@ -45,6 +45,10 @@ jobs:
         echo "(3) AND (4):" ${{ (steps.datas.outputs.current <= steps.datas.outputs.limit) && (steps.datas.outputs.previous > steps.datas.outputs.limit) }}
         echo "(1) AND (2) OR (3) AND (4):" ${{ (((steps.datas.outputs.current >= steps.datas.outputs.limit) && (steps.datas.outputs.previous < steps.datas.outputs.limit)) || ((steps.datas.outputs.current <= steps.datas.outputs.limit) && (steps.datas.outputs.previous > steps.datas.outputs.limit))) }}
 
+    - name: With Num Outputs
+      run: |
+        echo "(1) NUM CURRENT PRICE >= PRICE LIMIT:" ${{ steps.datas.outputs.current -ge steps.datas.outputs.limit }}
+
     - name: TEST for limit event (Outputs)
       if: ${{ (((steps.datas.outputs.current >= steps.datas.outputs.limit) && (steps.datas.outputs.previous < steps.datas.outputs.limit)) || ((steps.datas.outputs.current <= steps.datas.outputs.limit) && (steps.datas.outputs.previous > steps.datas.outputs.limit))) }}
       run: |-
